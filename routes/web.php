@@ -50,10 +50,10 @@ Route::group(['middleware' => 'App\Http\Middleware\SuperAdminMiddleware'], funct
 });
   
 
+
+//EXCEL IMPORT
 Route::get('/showdata', 'CsvController@showdata');     
-Route::get('/export', 'CsvController@export'); 
 Route::post('/import', 'CsvController@import');
-Route::post('/update', 'CsvController@update');
 
 
 

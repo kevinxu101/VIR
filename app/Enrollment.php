@@ -7,27 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enrollment extends Model
 {
-    protected $table = 'enrollment';
+    protected $table = 'enrollmenttable';
     protected $primaryKey = 'id';
 
     public $timestamps = false;
     
     protected $fillable = [
-        'timestamp', 
+        'created_at', 
         'status',
         'gradelevel',
-         'LRN',
-         'whatLRN',
-        'CHECKLIST', 
-        'Aware',
-        'SEMESTER',
-         'STRAND',
+         'lrn',
+         'whatlrn',
+        'checklist', 
+        'aware',
+        'semester',
+         'strand',
         'lname',
-         'givenname',
-        'mdname', 
-        'extensionname',
+         'gname',
+        'mname', 
+        'ename',
         'sex', 
-        'birth',
+        'birth',    
         'password',
         'age', 
         'indigenoucommunity',
@@ -51,7 +51,8 @@ class Enrollment extends Model
         'dateofcompleting',
     ];
 
-   
 
+
+ 
 }
 
