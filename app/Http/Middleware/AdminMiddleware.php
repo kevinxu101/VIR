@@ -20,8 +20,14 @@ class AdminMiddleware
     {
         if ($request->user() && $request->user()->type == "student")
         {
-                return new Response(view('student_home')->with('alert','Unanthoraized'));
+            return new Response(view('student_home')->with('alert','Unanthoraized'));
         }
-        return $next($request);
+        else if ($request->user() && $request->user()->type == "teacher")
+        {
+            return new Response(view('teacher_dashboard')->with('alert','Unanthoraized'));
+        }
+        
+        else return $next($request);
+        
     }
 }
