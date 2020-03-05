@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'VIR') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,9 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if(Auth::guest())
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @endif
 </head>
 <body>
     <div id="app">
+        @if(Auth::guest())
+        @endif
+
+        @if(Auth::check())
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -51,7 +58,14 @@
                             @endif
                         @else
                         @if (Auth::user()->type == "admin")
-                  
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin_dashboard') }}">Dashboard</a>
+                        </li>
+                        @endif
+                        @if (Auth::user()->type == "teacher")
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('teacher_dashboard') }}">Dashboard</a>
+                        </li>
                         @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -59,6 +73,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="#">Account Settings</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -71,13 +87,14 @@
                                 </div>
                             </li>
                         @endguest
-                        
+                      
                     </ul>
                 </div>
             </div>
         </nav>
+       @endif
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
