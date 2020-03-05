@@ -14,7 +14,7 @@ class CreateEnrollmentTable extends Migration
     public function up()
     {
         Schema::create('enrollmenttable', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->timestamps('');
             $table->string('status');
             $table->string('gradelevel');
@@ -52,7 +52,7 @@ class CreateEnrollmentTable extends Migration
             $table->string('ihereby');
             $table->date('dateofcompleting');
      //       $table->timestamp('email_verified_at')->nullable();
-     
+
 
 
         });

@@ -130,99 +130,55 @@
             <h1 class="h3 mb-0 text-gray-800"> Teacher Section A</h1>
           </div>
 
-        
+
           <!-- Content Row -->
 
           <div class="row">
           <!--Start-->
             <div class="col-xl-12">
                 <!-- Section A -->
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary"><a href="sectionA.html">Business Mathematics</a></h6>
-                    <!--Put Dropdown here for View Students-->
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <img src="img/pic.jfif" width="400" height="300" class="p-md-3">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <div class="py-md-4">
-                        <p>MTHWRLD or Math World is a lorem ipsum ipsum lorem haler halor hadorkadork.</p>
-                        <p><strong>TH 1:00 PM - 2:00 PM</strong></p>
-                        <p><strong>Number of Students: </strong>41</p>
+                @foreach($section as $section)
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"><a href="{{ route('student.index') }}">{{$section->section_name}}</a></h6>
+                            <!--Put Dropdown here for View Students-->
                         </div>
-                      </div>
-                      <div class="col-md-8">
-                        <a href="addGrade.html" class="btn btn-success btn-icon-split">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="img/pic.jfif" width="400" height="300" class="p-md-3">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div class="py-md-4">
+                                        <p>MTHWRLD or Math World is a lorem ipsum ipsum lorem haler halor hadorkadork.</p>
+                                        <p><strong>TH 1:00 PM - 2:00 PM</strong></p>
+                                        <p><strong>Number of Students: </strong>41</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="addGrade.html" class="btn btn-success btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-plus"></i>
                           </span>
-                          <span class="text">Add Grade</span>
-                        </a>
-                        <a href="#" class="btn btn-primary btn-icon-split">
+                                        <span class="text">Add Grade</span>
+                                    </a>
+                                    <a href="#" class="btn btn-primary btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-eye"></i>
                           </span>
-                          <span class="text">View Grade</span>
-                        </a>
-                        <a href="#" class="btn btn-warning btn-icon-split">
+                                        <span class="text">View Grade</span>
+                                    </a>
+                                    <a href="#" class="btn btn-warning btn-icon-split">
                           <span class="icon text-white-50">
                             <i class="fas fa-edit"></i>
                           </span>
-                          <span class="text">Edit Grade</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xl-12">
-                <!-- Section A -->
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary"><a href="sectionA.html">Science and Technology</a></h6>
-                    <!--Put Dropdown here for View Students-->
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <img src="img/pic.jfif" width="400" height="300" class="p-md-3">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <div class="py-md-4">
-                        <p>MTHWRLD or Math World is a lorem ipsum ipsum lorem haler halor hadorkadork.</p>
-                        <p><strong>TH 1:00 PM - 2:00 PM</strong></p>
-                        <p><strong>Number of Students: </strong>41</p>
+                                        <span class="text">Edit Grade</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col-md-8">
-                        <a href="addGrade.html" class="btn btn-success btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-plus"></i>
-                          </span>
-                          <span class="text">Add Grade</span>
-                        </a>
-                        <a href="#" class="btn btn-primary btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-eye"></i>
-                          </span>
-                          <span class="text">View Grade</span>
-                        </a>
-                        <a href="#" class="btn btn-warning btn-icon-split">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-edit"></i>
-                          </span>
-                          <span class="text">Edit Grade</span>
-                        </a>
-                      </div>
                     </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </div>
             </div>

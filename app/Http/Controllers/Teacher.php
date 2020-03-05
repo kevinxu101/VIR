@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Teacher as AppTeacher;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\section;
+use App\student;
 class Teacher extends Controller
 {
     /**
@@ -14,8 +17,10 @@ class Teacher extends Controller
      */
     public function index()
     {
-        $Teacher = AppTeacher::all();
-        return view('index', compact('Teacher'));
+        $section = section::all();
+        return view('teacher_section', compact('section'));
+        //$Teacher = AppTeacher::all();
+        //return view('index', compact('Teacher'));
     }
 
     /**

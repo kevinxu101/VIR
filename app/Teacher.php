@@ -12,4 +12,14 @@ class Teacher extends Model
         'email',
         'subject'
     ];
+
+    public function section(){
+        return $this->hasMany(section::class);
+    }
+    public function subject(){
+        return $this->hasMany(subject::class);
+    }
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }

@@ -93,9 +93,9 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Type') }}</label>
 
                             <div class="col-md-6">
-                                <select name="type" id="tpye" class="form-control">
+                                <select name="type" id="type" class="form-control">
                                     <option value=student>Student</option>
-                                    <option value=student>Teacher</option>
+                                    <option value=teacher>Teacher</option>
                                     <option value=admin>Admin</option>
                                     <option value=super_admin>Super Admin</option>
                                 </select>
