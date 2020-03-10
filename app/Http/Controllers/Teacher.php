@@ -17,7 +17,12 @@ class Teacher extends Controller
      */
     public function index()
     {
-        $section = section::all();
+        $uid = Auth::user()->id;
+        $section = DB::select("SELECT DISTINCT sections.section_name FROM (sections as sec,teachers)
+                                        JOIN teacher_sections ON teachers.teacherID = teacher_sections.teacherID
+                                        JOIN sections ON sections.sectionID = teacher_sections.sectionID
+                                       WHERE teachers.teacherID = '$uid' and sections.sectionID = teacher_sections.sectionID");
+        collect($section);
         return view('teacher_dashboard', compact('section'));
         //$Teacher = AppTeacher::all();
         //return view('index', compact('Teacher'));
