@@ -1,5 +1,3 @@
-
-
 @extends('layouts.dashboards')
 
 @section('content')
@@ -100,7 +98,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello {{Auth::user()->fname}} {{ Auth::user()->lname }}!</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -127,7 +125,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"> Teacher Section A</h1>
+            <h1 class="h3 mb-0 text-gray-800">Hello! Teacher  {{ Auth::user()->lname }}</h1>
           </div>
 
 
@@ -137,10 +135,10 @@
           <!--Start-->
             <div class="col-xl-12">
                 <!-- Section A -->
-                @foreach($section as $section)
+                @foreach($section  as $section)
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"><a href="{{ route('student.index') }}">{{$section->section_name}}</a></h6>
+                            <h6 class="m-0 font-weight-bold text-primary"><a href="">{{$section->section_name}}</a></h6>
                             <!--Put Dropdown here for View Students-->
                         </div>
                         <div class="row">
@@ -210,11 +208,17 @@
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
+          <form id="frm-logout"  method="POST" action="{{ route('logout') }}">
+            @csrf
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();">Logout</a>
+        </form>
         </div>
       </div>
     </div>
   </div>
-
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 @endsection

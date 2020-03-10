@@ -20,6 +20,7 @@ class LoginController extends Controller
     |
     */
 
+    
     use AuthenticatesUsers;
 
     /**
@@ -37,15 +38,28 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        if(Auth::check()){
+            $this->redirectTo = '/';
+
+        }
     }
 
+    
+
+    
     public function redirectTo(){
+
+       
+
        if(Auth::user()->type == "admin"){
         $this->redirectTo = '/admin_dashboard';
         return $this->redirectTo;
        }
        if(Auth::user()->type == "student"){
         $this->redirectTo = '/student_home';
+        return $this->redirectTo;
+       }if(Auth::user()->type == "teacher"){
+        $this->redirectTo = '/teacher_dashboard';
         return $this->redirectTo;
        }
     }

@@ -71,7 +71,7 @@
                   <hr>
                   <div class="text-center">
                     <a class="small" href="{{ __('Forgot Your Password?') }}">Forgot Password?</a><br/>
-                    <a class="small" href="{{ route('register') }}">Register here mga walang accounts</a>
+                    <a class="small" href="{{ route('register') }}">Register</a>
                   </div>
                 </div>
               </div>

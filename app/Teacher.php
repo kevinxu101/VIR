@@ -10,7 +10,9 @@ class Teacher extends Model
         'fname',
         'lname',
         'email',
-        'subject'
+        'subjectID',
+        'sectionID',
+        'id'
     ];
 
     public function section(){

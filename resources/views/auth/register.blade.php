@@ -102,6 +102,44 @@
                             </div>
                         </div>
 
+                        
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Teacher Subject') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="subjectID" id="subjectID" class="form-control">
+                                    <option value=1>Mathematics</option>
+                                    <option value=2>Science</option>
+                                    <option value=3>English</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Teacher Section') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="sectionID" id="sectionID" class="form-control">
+                                    <option value=1>Grade 11 - A</option>
+                                    <option value=2>Grade 11 - B</option>
+                                    <option value=3>Grade 12 - A</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('ID') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="id" id="id" class="form-control">
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherMiddleware
 {
@@ -16,14 +17,17 @@ class TeacherMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::guest()){
+            return redirect()->route('home');
+        }
         if ($request->user() && $request->user()->type == "admin")
         {
-                return new Response(view('admin_dashboard')->with('alert','Unanthoraized'));
+            return redirect()->route('admin_dashboard');
         }
 
         else if ($request->user() && $request->user()->type == "student")
         {
-            return new Response(view('student_home')->with('alert','Unanthoraized'));
+            return redirect()->route('student_home');
         }
 
         else return $next($request);

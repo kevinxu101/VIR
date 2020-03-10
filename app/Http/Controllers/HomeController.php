@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Middleware\UsersMiddleware;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -25,13 +27,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(Auth::user()->type == "student"){
+            return redirect()->route('student_home');
+
+        }
+        if(Auth::user()->type == "admin"){
+            return redirect()->route('admin_dashboard');
+
+        }
+        if(Auth::user()->type == "teacher"){
+            return redirect()->route('teacher_dashboard');
+        }
       
     }
  
 
     public function admin(Request $req){
-        return view('admin_dashboard')->withMessage("admin");
+        return view('admin_dashboard')->withMessage("admin")->name('admin_dashboard');
     }
     public function super_admin(Request $req){
         return view('admin_dashboard')->withMessage("Super Admin");

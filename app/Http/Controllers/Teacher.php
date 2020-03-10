@@ -18,7 +18,7 @@ class Teacher extends Controller
     public function index()
     {
         $section = section::all();
-        return view('teacher_section', compact('section'));
+        return view('teacher_dashboard', compact('section'));
         //$Teacher = AppTeacher::all();
         //return view('index', compact('Teacher'));
     }

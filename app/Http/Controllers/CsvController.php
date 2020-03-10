@@ -28,12 +28,9 @@ class CsvController extends Controller
           
           Excel::import(new ImportEnrollment(), request()->file('import_file'));
 
-          return back();    
+          return back()->with('success','Import Student Successful');    
            
         }else{
-
-  
-          
           return back()->with('error',"ERRORR!!!!!!!!!");
   
         }

@@ -3,6 +3,10 @@
 
 // Variables
 @import 'variables';
+$fa-front-path: "../fonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+

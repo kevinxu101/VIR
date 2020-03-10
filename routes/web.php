@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -27,32 +28,39 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('teacher', 'TeacherController');
-
+Route::resource('admin','AdminController');
 Route::resource('student','StudentController');
 
 //Add my controller ('modelname',''controllername)
-Route::resource('Teacher', 'Teacher');
+
+
 
 //Users middleware
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
     Route::get('/admin_dashboard', 'AdminController@index')->name('admin_dashboard');
+    Route::get('/admin_registration',function(){
+        return view('admin_registration');
+    });
+    Route::get('/admin_import',function(){
+        return view('admin_import');
+    });
+    
 });
 Route::group(['middleware' => 'App\Http\Middleware\StudentMiddleware'], function()
 {
-    Route::get('/student_home', 'StudentController@student')->name('student_home');
+    Route::get('/student_home', 'StudentController@index')->name('student_home');
 });
 /*
 Route::group(['middleware' => 'App\Http\Middleware\SuperAdminMiddleware'], function()
 {
     Route::match(['get', 'post'], '/superAdminOnlyPage/', 'HomeController@super_admin');
-
 });
 */
 Route::group(['middleware' => 'App\Http\Middleware\TeacherMiddleware'], function()
 {
-    Route::get('/teacher_dashboard', 'TeacherController@index')->name('teacher_dashboard');
-
+    Route::resource('Teacher', 'Teacher');
+    Route::get('/teacher_dashboard', 'Teacher@index')->name('teacher_dashboard');
 });
 
 Route::get('/showdata', 'CsvController@showdata');
@@ -61,6 +69,3 @@ Route::post('/import', 'CsvController@import');
 Route::post('/update', 'CsvController@update');
 
 
-
-
-?>

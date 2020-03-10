@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Teacher;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,10 @@ class RegisterController extends Controller
          $this->redirectTo = '/student_home';
          return $this->redirectTo;
         }
+        if(Auth::user()->type == "teacher"){
+            $this->redirectTo = '/teacher_dashboard';
+            return $this->redirectTo;
+           }
      }
 
     /**
@@ -66,16 +71,10 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    
     protected function create(array $data)
     {
-        return User::create([
+         $user = User::create([
             'username' => $data['username'],
             'fname' => $data['fname'],
             'lname' => $data['lname'],
@@ -83,5 +82,19 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'type' => $data['type']
         ]);
+        if($data['type'] == "teacher"){
+            Teacher::create([
+                'teacherID' => 1,
+                'fname' =>  $data['fname'],
+                'lname' =>  $data['lname'],
+                'email' =>  $data['email'],
+                'subjectID' => $data['subjectID'],
+                'sectionID' => $data['sectionID'],
+                'id' => $data['id']
+            ]);
+        }
+    
+         
+       return $user;
     }
 }
