@@ -30,7 +30,7 @@ class StudentController extends Controller
             ->distinct()
             ->get();
         return view('teacher_class', compact('student'));
-       
+
     }
      */
 }

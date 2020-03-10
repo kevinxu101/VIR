@@ -21,8 +21,6 @@ class CreateStudentsTable extends Migration
             $table->string('year_level');
             $table->integer('sectionID')->unsigned();
             $table->foreign('sectionID')->references('studentID')->on('students');
-            $table->integer('subjectID')->unsigned();
-            $table->foreign('subjectID')->references('studentID')->on('students');
             
         });
     }

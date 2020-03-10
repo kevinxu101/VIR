@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Teacher;
+use App\teacher_sections;
+use App\teacher_subject;
 use App\User;
  use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -27,8 +29,8 @@ class RegisterController extends Controller
     use RegistersUsers;
 
 
-  
-   
+
+
     protected function redirectTo(){
         if(Auth::user()->type == "admin"){
          $this->redirectTo = '/admin_dashboard';
@@ -71,7 +73,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    
+
     protected function create(array $data)
     {
          $user = User::create([
@@ -88,13 +90,20 @@ class RegisterController extends Controller
                 'fname' =>  $data['fname'],
                 'lname' =>  $data['lname'],
                 'email' =>  $data['email'],
+            ]);
+            teacher_subject::create([
+                'teacher_subjectID' => 1,
+                'teacherID' => 1,
                 'subjectID' => $data['subjectID'],
+            ]);
+            teacher_sections::create([
+                'teacher_sectionID' => 1,
+                'teacherID' => 1,
                 'sectionID' => $data['sectionID'],
-                'id' => $data['id']
             ]);
         }
-    
-         
+
+
        return $user;
     }
 }

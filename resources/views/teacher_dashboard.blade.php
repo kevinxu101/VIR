@@ -138,7 +138,7 @@
                 @foreach($section  as $section)
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"><a href="">{{$section->section_name}}</a></h6>
+                            <h6 class="m-0 font-weight-bold text-primary"><a href="{{ route('studentList.index') }}">{{$section->section_name}}</a></h6>
                             <!--Put Dropdown here for View Students-->
                         </div>
                         <div class="row">

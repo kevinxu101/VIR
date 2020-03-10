@@ -7,8 +7,9 @@
         <div class="col-md-10">
             <div class="card">
                 <div>
+
                 @foreach($student as $student)
-                    <a href="{{ route('student.index') }}"><ul>{{$student->fname}}</ul></a>
+                    <a href="{{ route('studentList.index') }}"><ul>{{$student->fname . ' ' . $student->lname . ' ' . $student->subject_name}}</ul></a>
                 @endforeach
                 </div>
                 <div class="col-sm-12s">

@@ -19,6 +19,9 @@ class CreateTeacherSubjectsTable extends Migration
             $table->integer('subjectID')->unsigned();
             $table->foreign('teacherID')->references('teacher_subjectID')->on('teacher_subjects');
             $table->foreign('subjectID')->references('teacher_subjectID')->on('teacher_subjects');
+            $table->timestamps();
+            //$table->integer('studentID')->unsigned();
+            //$table->foreign('studentID')->references('teacher_subjectID')->on('teacher_subjects');
         });
     }
 

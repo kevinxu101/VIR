@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('teacher', 'TeacherController');
 Route::resource('admin','AdminController');
-Route::resource('student','StudentController');
+Route::resource('studentList','StudentListController');
 
 //Add my controller ('modelname',''controllername)
 
@@ -45,7 +45,7 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin_import',function(){
         return view('admin_import');
     });
-    
+
 });
 Route::group(['middleware' => 'App\Http\Middleware\StudentMiddleware'], function()
 {

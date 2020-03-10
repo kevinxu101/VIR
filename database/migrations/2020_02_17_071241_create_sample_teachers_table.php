@@ -15,16 +15,10 @@ class CreateSampleTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->Increments('teacherID');
-            $table->timestamps();
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
-            $table->integer('subjectID')->unsigned();
-            $table->foreign('subjectID')->references('teacherID')->on('teachers');
-            $table->integer('sectionID')->unsigned();
-            $table->foreign('sectionID')->references('teacherID')->on('teachers');
-            $table->integer('id')->unsigned();
-            $table->foreign('id')->references('teacherID')->on('teachers');
+            $table->timestamps();
         });
     }
 

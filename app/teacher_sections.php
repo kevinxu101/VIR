@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class teacher_subject extends Model
+class teacher_sections extends Model
 {
     protected $fillable = [
-        'teacher_subjectID',
+        'teacher_sectionID',
         'teacherID',
-        'subjectID',
+        'sectionID',
     ];
-    public function subject(){
-        return $this->hasMany(subject::class);
-    }
     public function section(){
         return $this->hasMany(section::class);
+    }
+    public function teacher(){
+        return $this->hasMany(teacher::class);
     }
 }
